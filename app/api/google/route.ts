@@ -22,7 +22,6 @@ export async function GET() {
     const client = await auth.getClient();
     const accessToken = await client.getAccessToken();
 
-    console.log("accessToken: ", accessToken.token);
     const drive = google.drive({ version: "v3", auth: auth });
     const response = await drive.files.list();
 

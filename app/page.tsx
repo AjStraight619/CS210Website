@@ -49,24 +49,6 @@ export default async function Home() {
       <header className="relative text-4xl font-bold dark:drop-shadow-[0_0_0.3rem_#ffffff70]">
         Data Structures & Algorithms
       </header>
-      <>
-        {files?.map((file) => (
-          <div key={file.id}>
-            <h3>{file.name}</h3>
-            <img
-              src={file.thumbnailLink ?? ""}
-              alt={`Thumbnail of ${file.name}`}
-            />
-            <a
-              href={file.webViewLink ?? ""}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View File
-            </a>
-          </div>
-        ))}
-      </>
     </main>
   );
 }
