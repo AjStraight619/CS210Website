@@ -1,5 +1,4 @@
 import About from "@/components/landing-page/about";
-import Contact from "@/components/landing-page/contact";
 import LandingPageHeader from "@/components/landing-page/header";
 import InstructorInfo from "@/components/landing-page/instructor-info";
 
@@ -10,7 +9,6 @@ export default async function Home() {
         <LandingPageHeader />
         <About />
         <InstructorInfo />
-        <Contact />
       </div>
     </main>
   );

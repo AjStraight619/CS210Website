@@ -6,10 +6,6 @@ export const navbarLinks = [
     name: "Calculate Grade",
     href: "/calculator",
   },
-  {
-    name: "Assignments",
-    href: "/assignments",
-  },
 ] as const;
 
 export const programmingAssignments = [
