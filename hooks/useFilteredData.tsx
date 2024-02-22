@@ -1,14 +1,29 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+// Assuming useFilteredData is in a file like hooks/useFilteredData.ts
+import { SearchItem } from "@/lib/types"; // Adjust the import path as necessary
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export const useFilteredData = ({ data }: any) => {
-  const pathname = usePathname();
+type FilteredDataProps = {
+  data: SearchItem[];
+};
+
+export const useFilteredData = ({ data }: FilteredDataProps) => {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const [filteredData, setFilteredData] = useState<SearchItem[]>([]);
 
   useEffect(() => {
-    const query = searchParams.get("search");
-  }, [searchParams]);
+    const searchQuery = searchParams.get("search");
+    if (searchQuery) {
+      const filtered = data.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData([]);
+    }
+  }, [searchParams, data]);
 
-  return <div>useFilteredData</div>;
+  return {
+    filteredData,
+  };
 };

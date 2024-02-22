@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import { SearchItem } from "./types";
 
 export const navbarLinks = [
@@ -82,7 +83,7 @@ export const topics = [
 
 export const searchData: SearchItem[] = [
   ...programmingAssignments.map(
-    (item) => ({ ...item, type: "Assignment" } as const)
+    (item) => ({ ...item, id: uuid(), type: "Assignment" } as const)
   ),
-  ...topics.map((item) => ({ ...item, type: "Topic" } as const)),
+  ...topics.map((item) => ({ ...item, id: uuid(), type: "Topic" } as const)),
 ];

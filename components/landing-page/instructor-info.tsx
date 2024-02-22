@@ -3,14 +3,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const InstructorInfo = () => {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
-        <CardTitle>{instructorInfo.name}</CardTitle>
+        <CardTitle className="text-center">{instructorInfo.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        {instructorInfo.Email}
-        {instructorInfo["Virtual Office"]}
-        {instructorInfo.Office}
+        <ul className="flex flex-col items-center justify-center">
+          {Object.entries(instructorInfo).map(([key, value]) =>
+            key !== "name" ? (
+              <li key={key}>
+                <span className="font-semibold">{key}: </span>
+                <span>{value}</span>
+              </li>
+            ) : null
+          )}
+        </ul>
+        {/* <span>{instructorInfo.Email}</span>
+        <span>{instructorInfo["Virtual Office"]}</span>
+        <span>{instructorInfo.Office}</span> */}
       </CardContent>
     </Card>
   );

@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar/navbar";
+import Navbar from "@/components/navigation/navbar";
 import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

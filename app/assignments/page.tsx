@@ -1,3 +1,6 @@
+import Header from "@/components/common/header";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { google } from "googleapis";
 import Image from "next/image";
 
@@ -20,12 +23,13 @@ export default async function AssignmentPage() {
   const drive = google.drive({ version: "v3", auth: auth });
   const fileListResponse = await drive.files.list({
     q: `'${folderId}' in parents`,
-    fields: "files(id, name, webViewLink, thumbnailLink)",
+    fields:
+      "nextPageToken, files(id, name, mimeType, webViewLink, thumbnailLink, webContentLink)",
   });
 
   const files = fileListResponse.data.files;
 
-  console.log("Files: ", files);
+  // console.log("Files: ", files);
 
   for (const file of files!) {
     const fileId = file.id;
@@ -33,41 +37,45 @@ export default async function AssignmentPage() {
     const webViewLink = file.webViewLink;
     const thumbnailLink = file.thumbnailLink;
 
-    console.log(`File Name: ${fileName}`);
-    console.log(`Web View Link: ${webViewLink}`);
-    console.log(`Thumbnail Link: ${thumbnailLink}`);
+    // console.log(`File Name: ${fileName}`);
+    // console.log(`Web View Link: ${webViewLink}`);
+    // console.log(`Thumbnail Link: ${thumbnailLink}`);
 
     // Optionally, generate a direct download link (not shown here)
     // Remember, for direct downloads, proper permissions are required
   }
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4">
-      AssignmentPage
+    <main className="min-h-screen pt-[4rem] flex flex-col items-center justify-center p-4">
+      <Header pagename="Assignments" />
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
         {files?.map((file) => (
-          <li
-            key={file.id}
-            className="bg-black shadow-md rounded-lg flex flex-col items-center p-4 space-y-2"
-          >
-            <h3 className="text-lg font-semibold">{file.name}</h3>
-            <div className="rounded overflow-hidden">
-              <Image
-                src={file.thumbnailLink ?? ""}
-                alt={`Thumbnail of ${file.name}`}
-                width={240}
-                height={240}
-                layout="responsive"
-                quality={100}
-              />
-            </div>
-            <a
+          <li key={file.id} className="">
+            <Card>
+              <CardHeader>
+                <CardTitle>{file.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AspectRatio ratio={150 / 180}>
+                  <Image
+                    className="rounded-md"
+                    src={file.thumbnailLink ?? ""}
+                    alt={`Thumbnail of ${file.name}`}
+                    width={150}
+                    height={180}
+                    quality={100}
+                  />
+                </AspectRatio>
+              </CardContent>
+            </Card>
+
+            {/* <a
               href={file.webViewLink ?? ""}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:text-blue-700 underline"
             >
               View File
-            </a>
+            </a> */}
           </li>
         ))}
       </ul>
