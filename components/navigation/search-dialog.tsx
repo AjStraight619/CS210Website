@@ -11,7 +11,11 @@ import {
 } from "../ui/dialog";
 import SearchBar from "./search";
 
-const SearchDialog = () => {
+type SearchDialogProps = {
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const SearchDialog = ({ setIsMenuOpen }: SearchDialogProps) => {
   const { filteredData } = useFilteredData({ data: searchData });
 
   return (
@@ -44,7 +48,6 @@ const SearchDialog = () => {
                     className="inline-flex gap-2 text-primary/70 hover:text-primary"
                     href={item.href}
                   >
-                    <span className="text-sm">Go to</span>
                     <ExternalLink size={15} />
                   </Link>
                 )}

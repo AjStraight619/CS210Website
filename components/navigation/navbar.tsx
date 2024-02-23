@@ -11,6 +11,7 @@ import TopicsDropdown from "./topics-dropdown";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 z-50 h-16 w-full border-b shadow-md backdrop-blur-sm">
       <div className="container mx-auto flex h-full items-center justify-between px-6">
@@ -28,7 +29,7 @@ const Navbar = () => {
             </Link>
           ))}
           <TopicsDropdown />
-          <SearchDialog />
+          <SearchDialog setIsMenuOpen={setIsMenuOpen} />
           <div className="">
             <ModeToggle />
           </div>
@@ -46,7 +47,7 @@ const Navbar = () => {
           onOpenChange={() => setIsMenuOpen((prev) => !prev)}
         >
           <DialogContent className="space-y-2">
-            <SearchDialog />
+            <SearchDialog setIsMenuOpen={setIsMenuOpen} />
             {navbarLinks.map((link, index) => (
               <Link
                 key={index}
