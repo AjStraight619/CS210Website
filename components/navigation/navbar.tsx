@@ -3,8 +3,10 @@ import { navbarLinks } from "@/lib/data";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Dialog, DialogContent } from "../ui/dialog";
 import { ModeToggle } from "../ui/theme-toggle";
 import SearchDialog from "./search-dialog";
+import TopicsAccordionMobile from "./topics-accordion-mobile";
 import TopicsDropdown from "./topics-dropdown";
 
 const Navbar = () => {
@@ -12,10 +14,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 z-50 h-16 w-full border-b shadow-md backdrop-blur-sm">
       <div className="container mx-auto flex h-full items-center justify-between px-6">
-        <a href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold">
           CS 210
-        </a>
-        {/* Full Navbar for larger screens */}
+        </Link>
         <div className="hidden sm:flex items-center space-x-4">
           {navbarLinks.map((link, index) => (
             <Link
@@ -28,7 +29,7 @@ const Navbar = () => {
           ))}
           <TopicsDropdown />
           <SearchDialog />
-          <div>
+          <div className="">
             <ModeToggle />
           </div>
         </div>
@@ -40,8 +41,12 @@ const Navbar = () => {
           <Menu />
         </button>
 
-        {isMenuOpen && (
-          <div className="absolute top-16 right-0 z-10 w-48 bg-white shadow-lg p-4 sm:hidden">
+        <Dialog
+          open={isMenuOpen}
+          onOpenChange={() => setIsMenuOpen((prev) => !prev)}
+        >
+          <DialogContent className="space-y-2">
+            <SearchDialog />
             {navbarLinks.map((link, index) => (
               <Link
                 key={index}
@@ -52,9 +57,9 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            {/* Additional mobile menu items here */}
-          </div>
-        )}
+            <TopicsAccordionMobile />
+          </DialogContent>
+        </Dialog>
       </div>
     </nav>
   );
