@@ -1,13 +1,14 @@
-import About from "@/components/landing-page/about";
 import LandingPageHeader from "@/components/landing-page/header";
 import InstructorInfo from "@/components/landing-page/instructor-info";
+import MainRouteLinks from "@/components/landing-page/main-route-links";
 
 export default async function Home() {
   return (
     <main className="flex min-h-screen items-center justify-center p-6">
       <div className="container mx-auto flex flex-col items-center space-y-16 max-w-2xl">
         <LandingPageHeader />
-        <About />
+        <MainRouteLinks />
+        {/* <About /> */}
         <InstructorInfo />
       </div>
     </main>

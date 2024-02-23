@@ -19,27 +19,8 @@ const auth = new google.auth.GoogleAuth({
 export async function GET() {
   console.log("in get request");
   try {
-    const client = await auth.getClient();
-    const accessToken = await client.getAccessToken();
-
     const drive = google.drive({ version: "v3", auth: auth });
     const response = await drive.files.list();
-
-    // const endpoint = `https://www.googleapis.com/drive/v3/files`;
-
-    // const res = await fetch(endpoint, {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken.token}`,
-    //     Accept: "application/json",
-    //   },
-    // });
-
-    // console.log("res: ", res);
-
-    // if (!res.ok) {
-    //   throw new Error(`Server responded with ${res.status}`);
-    // }
 
     const data = response.data;
     return NextResponse.json(data);

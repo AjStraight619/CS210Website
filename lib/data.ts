@@ -1,3 +1,6 @@
+import React from "react";
+import { FaJava } from "react-icons/fa";
+import { SiCplusplus } from "react-icons/si";
 import { v4 as uuid } from "uuid";
 import { SearchItem } from "./types";
 
@@ -7,6 +10,23 @@ export const navbarLinks = [
     href: "/calculator",
   },
 ] as const;
+
+export const mainRoutes = [
+  {
+    name: "Java",
+    description:
+      "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation.",
+    icon: React.createElement(FaJava),
+    href: "/java",
+  },
+  {
+    name: "C++",
+    description:
+      'C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.',
+    icon: React.createElement(SiCplusplus),
+    href: "/c-plus-plus",
+  },
+];
 
 export const programmingAssignments = [
   {
