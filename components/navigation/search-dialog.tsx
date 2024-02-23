@@ -17,13 +17,15 @@ const SearchDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button
-          className="w-10 p-2 relative inline-flex items-center border rounded-md text-primary/70 hover:text-primary z-[999]"
-          style={{ minWidth: "200px" }}
-        >
-          <Search className="absolute left-3 " />
-          <span className="ml-8 ">Search...</span>
-        </button>
+        <div className="relative inline-flex items-center">
+          <button className="w-10 h-10 p-2 border rounded-md text-primary/70 hover:text-primary z-[999] sm:hidden">
+            <Search className="m-auto" />
+          </button>
+          <button className="hidden sm:flex w-full p-2 border rounded-md text-primary/70 hover:text-primary items-center justify-center">
+            <Search className="mr-2" />
+            <span>Search...</span>
+          </button>
+        </div>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="pt-4">
