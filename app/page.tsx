@@ -1,27 +1,15 @@
-import LandingPageHeader from "@/components/landing-page/header";
-import InstructorInfo from "@/components/landing-page/instructor-info";
-import MainRouteLinks from "@/components/landing-page/main-route-links";
+import ClassCards from "@/components/landing-page/class-cards";
+import DiscordLinks from "@/components/landing-page/discord-links";
+import Intro from "@/components/landing-page/intro";
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center p-6">
-      <div className="container mx-auto flex flex-col items-center space-y-16 max-w-2xl">
-        <LandingPageHeader />
-        <MainRouteLinks />
-        {/* <About /> */}
-        <InstructorInfo />
+    <main className="flex min-h-screen items-center justify-center p-6 ">
+      <div className="flex flex-col items-center justify-between space-y-16 max-w-4xl">
+        <Intro />
+        <ClassCards />
+        <DiscordLinks />
       </div>
     </main>
   );
-}
-
-{
-  /* Smaller Pink Circle */
-}
-{
-  /* <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-      <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div> */
-}
-{
-  /* Example Content */
 }

@@ -21,9 +21,9 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className="relative">
         <Input
-          className="text-muted-foreground pl-10 w-full"
+          className="text-muted-foreground pl-10 "
           type="text"
           placeholder="Search..."
           onChange={(e) => handleSearch(e.target.value)}

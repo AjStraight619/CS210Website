@@ -22,7 +22,7 @@ const SearchDialog = ({ setIsMenuOpen }: SearchDialogProps) => {
     <Dialog>
       <DialogTrigger asChild>
         <button
-          className="w-full mt-8 sm:mt-0 sm:w-10 p-2 relative inline-flex items-center border rounded-md text-primary/70 hover:text-primary z-[999]"
+          className=" mt-8 sm:mt-0 sm:w-10 p-2 relative inline-flex items-center border rounded-md text-primary/70 hover:text-primary z-[999] bg-stone-200"
           style={{ minWidth: "200px" }}
         >
           <Search className="absolute left-3 " />

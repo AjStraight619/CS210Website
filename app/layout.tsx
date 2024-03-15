@@ -1,9 +1,9 @@
-import Navbar from "@/components/navigation/navbar";
-import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Suspense } from "react";
 import "./globals.css";
+
+import Footer from "@/components/common/footer";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,18 +21,14 @@ export default function RootLayout({
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className="relative">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense>
-              <Navbar />
-            </Suspense>
-            {children}
-          </ThemeProvider>
+        <body className="relative bg-bgMain-1 text-darkBlue-1">
+          {/* <Suspense>
+            <Navbar />
+          </Suspense> */}
+          {children}
+          <Suspense>
+            <Footer />
+          </Suspense>
         </body>
       </html>
     </>
