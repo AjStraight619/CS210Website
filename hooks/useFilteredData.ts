@@ -1,5 +1,4 @@
-// Assuming useFilteredData is in a file like hooks/useFilteredData.ts
-import { SearchItem } from "@/lib/types"; // Adjust the import path as necessary
+import { SearchItem } from "@/lib/types";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
