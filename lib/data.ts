@@ -1,3 +1,7 @@
+import React from "react";
+import { FaDiscord, FaJava } from "react-icons/fa";
+import { SiCplusplus } from "react-icons/si";
+import { v4 as uuid } from "uuid";
 import { SearchItem } from "./types";
 
 export const navbarLinks = [
@@ -5,11 +9,26 @@ export const navbarLinks = [
     name: "Calculate Grade",
     href: "/calculator",
   },
-  {
-    name: "Assignments",
-    href: "/assignments",
-  },
 ] as const;
+
+export const mainRoutes = [
+  {
+    name: "Java",
+    description:
+      "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation.",
+    icon: React.createElement(FaJava),
+    href: "/java",
+    logo: "/java.svg",
+  },
+  {
+    name: "C++",
+    description:
+      'C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.',
+    icon: React.createElement(SiCplusplus),
+    href: "/c-plus-plus",
+    logo: "/cplusplus.svg",
+  },
+];
 
 export const programmingAssignments = [
   {
@@ -82,7 +101,25 @@ export const topics = [
 
 export const searchData: SearchItem[] = [
   ...programmingAssignments.map(
-    (item) => ({ ...item, type: "Assignment" } as const)
+    (item) => ({ ...item, id: uuid(), type: "Assignment" } as const)
   ),
-  ...topics.map((item) => ({ ...item, type: "Topic" } as const)),
+  ...topics.map((item) => ({ ...item, id: uuid(), type: "Topic" } as const)),
+];
+
+export const discordSectionData = [
+  {
+    name: "CS 210-section 1",
+    href: "https://discord.gg/CS210",
+    icon: React.createElement(FaDiscord),
+  },
+  {
+    name: "CS 310 - section 1",
+    href: "https://discord.gg/CS310",
+    icon: React.createElement(FaDiscord),
+  },
+  {
+    name: "CS 320 - section 1",
+    href: "https://discord.gg/CS320",
+    icon: React.createElement(FaDiscord),
+  },
 ];

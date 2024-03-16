@@ -46,7 +46,7 @@ const GradeForm = () => {
             <Input
               id="grade"
               name="grade"
-              type="number"
+              type="text"
               value={grade}
               onChange={handleChange}
               required
